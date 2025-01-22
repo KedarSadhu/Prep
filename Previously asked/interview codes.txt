@@ -1,0 +1,986 @@
+#include <iostream>using namespace std;  int main()
+{    char* str;      // Stored in read only part of data segment //    
+	str = "GfG";      // Problem:  trying to modify read only memory //   
+	*(str + 1) = 'n';    
+	return 0;}
+	
+const char data [16] = "Kedar Sadhu"
+
+[16:22] Anurag Bagadi
+char *pData = <_cast>
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+[16:27] Anurag Bagadi
+Implement Shape class which should be pure abstract class containing area pure virtual method
+
+[16:28] Anurag Bagadi
+Square and circle derived from shape and should calculate area using shape member variable
+
+
+#include<iostream>
+using namespace std;
+
+class shape
+{	
+	public:
+	int r;
+	virtual float area()=0;
+};
+
+class circle:public shape
+{
+	public:
+	circle(int rr)
+	{
+		r =rr;
+	}
+	float area()
+	{
+		return (3.14 * r *r);
+	}
+};
+
+class rectangle:public shape
+{
+	public:
+	rectangle(int rr)
+	{
+		r = rr;
+	}
+	float area()
+	{
+		return (r * r);
+	}
+};
+
+int main()
+{
+	Shape * ptr = new circle(10);
+	ptr->area();
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+class point
+{
+	int x;
+	int y;
+	
+	public:
+	point ()
+	{
+		x =10;
+		y =20;
+	}
+	point(point &refObj)
+	{
+		this->x = refobj.x;
+		this->y = refObj.y;
+	}
+	
+	point & operator =(point &refObj)
+	{
+	
+		if(*this != refobj)
+		{
+			this->x = refObj.x;
+			this->y = refObj.y;
+		}
+		
+		return *this;
+	}
+	
+};
+
+int main()
+{
+	point obj1;
+	point obj2(obj1);	//copy constructor
+	point obj3 = obj2;	//copy constructor
+	point obj4;
+	obj4 = obj4;	//= OPERATOR
+	return 0;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+sort vector of nonprimitive type
+
+stud
+{
+ unsigned int id;
+ string name;
+ string addr;
+}
+
+vector<stud>vec;
+
+vec -> end
+
+vec[i].id>vec[i+1].id
+
+swap
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+	int iNo1;
+	int iNo2;
+	int iAns;
+	
+	char * ch = NULL;
+	char * ch1 = "ABC";
+	
+	printf("Enter two numbers ::");
+	scanf("%d%d",&iNo1,&iNo2);	12
+	
+	iAns = Addition(iNo1,iNo2);
+	
+	//*ch = 'A';
+	//ch = "A";
+	
+	exit(0);
+}
+-------------------------------------------------------------------------------------------------------------------------------
+int Addition(int iNo1,int iNo2)
+{
+	iNo1+=2;
+	return (iNo1+iNo2);
+}	
+-------------------------------------------------------------------------------------------------------------------------------
+
+// Creates deadlock problem
+    mutex2.lock();
+    std::cout << "Thread A" << std::endl;
+    mutex1.lock();
+    mutex2.unlock();
+    mutex1.unlock();
+	
+-------------------------------------------------------------------------------------------------------------------------------
+	
+#include <iostream>
+#include <cmath>
+#include <cstdio>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class emp
+{
+private:
+    char* name;
+    static int age; 
+    
+    emp(emp &refobj)
+    {
+        
+        this->name = new char[strlen(refobj.name)];
+        this->age = refobj.age;
+        memcpy(name,refobj.name);	//diff between memcpy strcpy
+    }   
+    
+    static void shod_method()
+    {
+        cout << age << endl;
+        cout<< emp::age;
+    }
+    
+    void get_age() const		//non const obj ne constant la call karu shakto ka ? 
+    {
+        emp e;
+        e.age++;		
+    }
+    
+    void get_age_1()	// const obj ne non const la call karu shkato ka?
+    {
+        age++;
+    }
+    
+    emp& operator =(emp &refobj)	// implement copy assignment operator
+    {
+        if(this != refobj)
+        {
+          char * temp = new char[1024];
+          memcpy(temp,refobj.name);
+          
+            if(this->name == nullptr)
+            {
+                this->name = temp;
+            }
+            else
+            {
+                delete(this->name);
+                this->name = temp;
+            }
+          this->age =refobj.age;
+        }
+        return *this;
+    }
+};
+
+//emp const * const this = &obj;
+//obj.get_age()
+
+//upcasting using reference
+Der d;
+Base& b = d;
+b.Show();
+-------------------------------------------------------------------------------------------------------------------------------
+
+int main()
+{
+    return 0;
+    std::vector<int> iv{1,2,3, 5, 6, 5 , 3 , 2, 1, 5};	// remove multiple occurances of 5
+    std::vector<emp> emp_vec; // sort this
+    std::map<emp, std::string> emp_map;	//is this allowed?
+    
+    iv.push_back(1);
+    iv[5] = ele;
+    
+    sort(iv.begin(),iv.end());
+    vector <int> :: iterator it = iv.begin()+5;
+    iv.erase(it);
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+malloc(100);
+
+calloc(10,sizeof(a));
+
+char a[10]= "KEDAR" char b[10]= "SADHU"
+
+int iCounter = 0;
+
+for(;iCounter<10;iCounter++)
+{
+	if(a[i] == b[i])
+	 {
+		flag = 1
+	 }
+	else
+	  {
+			flag =0;
+		break;
+	  }
+}	
+
+if(flag)
+printf("Match");
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+void main(){
+   char *str="c-pointer";
+   printf("%*.*s",10,7,str); 
+}
+a)    c-pointer
+b)    c-pointer
+c)    c-point
+d)    cpointer null null
+e)    c-point
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+class base
+{
+	public:
+		virtual void fun()//1000
+		{
+			cout<<"In base fun()";
+		}
+};
+class derived:public base
+{
+	public:	
+	void fun() //2000
+	{
+		cout<<"In derived fun()";
+	}
+};
+
+int main()
+{
+	base * bp = new derived();
+	bp->fun();
+	return 0;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+int cnt =0;
+
+for(int i =0;i<n;i++)
+{
+	if(arr[i] == x)
+		if(arr[i+1] ==x)
+		 break;
+}
+
+if(cnt>= (n/2))
+	cout<<"X is major";
+	
+0  1   2 3   4	
+10 20 20 20 30 =5/2 =2
+
+10 20 20
+20
+
+a[20] = x
+a[21] = x
+
+int cnt =0;
+
+for(int i =0;i<n;i++)
+{
+	if(arr[i] == x)
+	{
+		if (arr[i+(n/2)] == x
+	}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+S1 = "Shored";
+s2 = "Horses";
+
+
+if(s1.length != s2.length)
+	{
+		cout<<"NOt an anagram"
+		return 0;
+	}
+for(int i =0;i<s2.length;i++)	//s2
+{
+	for(int j =0;j<s1.length;j++)
+	{
+		if(s2[i] == s1[j])
+			countinue;
+		else
+		   break;
+	}
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+int main() {
+
+    std::string str="sushmit patil";
+    int len=str.length();//13
+    int count=0;
+
+    for(auto i=len;i>=0;i--)//i=13
+    {
+        if(str[i]=='s')
+        {
+            count++;	
+        }
+         std::cout<<str;
+    }
+    std::cout<<std::endl;
+    std::cout<<count<<std::endl;
+    std::cout <<len<<std::endl;
+
+ 
+
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+int multiply(int a, int b) { return a * b; }
+
+int main()
+{
+    int (*func)(int, int);
+
+    func = &multiply;
+
+    int prod = func(15, 2);
+    cout << "The value of the product is: " << prod << endl;
+
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+class demo
+{
+  private:
+	virtual void fun()
+	{
+	}
+};
+
+class derived : public demo
+{
+  private:
+	void fun()
+	{
+		
+	}
+};
+
+int main(void)
+{
+	demo *obj;
+	derived dobj;
+	obj = &dobj;
+
+	obj->fun();
+	
+	cout<<sizeof(obj);
+	return 0;
+}
+
+
+demo obj;
+
+demo(obj);
+
+
+demo(demo * const this);
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+int main()
+{
+char array[5] = "Knot", *ptr, i, *ptr1;
+ptr = &array[1];
+ptr1 = ptr + 3;
+*ptr1 = 101;
+for(i = 0; i < 4;i++)
+printf("%c", *ptr++);	//ot101 crash  //correct ans note
+return 0;
+}
+// *,++ have same precedence -- associativity is R->L
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+int main()
+{
+char *ptr = "Pointer-to-String", i;
+printf("%s", ++ptr);//ointer-to-String
+return 0;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+my_struct_t *bar;
+my_struct_t *obj;
+
+my_struct
+{
+	int;
+	int;
+}
+ 
+
+/* ... do stuff, including setting bar to point to a defined my_struct_t object ... */
+
+ //without using name of struct calculate size
+
+memset(bar, 0, sizeof());
+-------------------------------------------------------------------------------------------------------------------------------
+#include<iostream>
+Class Base
+{
+    virtual void method()
+	{std::cout << "from Base"<< std::endl;}
+public:
+    virtual ~Base() 
+	{method();}
+    void baseMethod() 
+	{method();}
+};
+
+Class A: public Base 
+{
+    void method() {std::cout << "from A"<< std::endl;}
+ public:
+    ~A()  
+	{method();}
+};
+
+Int main(void){
+    Base* base = new A;
+    base->baseMethod();
+    delete base;
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+static int i =10;
+
+int main()
+{
+	fun();
+	exit(0);
+}
+
+void fun()
+{
+	int iNo1 = 10;
+	static int iNo2 = 11;
+	
+	++iNol;
+	++iNo2;
+
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+int main()
+{
+char*cptr= "Hello World";
+int *iptr = (int *)cptr;
+cptr++;
+iptr++;
+printf("%s,  %s\n", cptr, (char *)iptr);
+return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+void main()
+{
+int const *p = 5;
+printf("%d",++(*p));
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <sys/types.h>
+int main()
+{
+    fork();
+    fork();
+    fork();
+    printf("hello\n");
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+#include<stdio.h> 
+int fun(int a[],int n) 
+{ 
+  int x; 
+  if(n == 1) 
+    return a[0]; 
+  else
+    x = fun(a, n-1); 
+  if(x > a[n-1]) 
+    return x; 
+  else
+    return a[n-1]; 
+} 
+int main() 
+{ 
+  int arr[] = {12, 10, 30, 50, 100}; 
+  printf(" %d ", fun(arr, 5)); 
+  getchar(); 
+  return 0; 
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+i/p --> unsigned int a = 0xABCD
+op --> oxCDAB
+-------------------------------------------------------------------------------------------------------------------------------
+
+int (*fptr)(int,int);
+fptr = addition;
+
+sum = fptr(10,20);
+-------------------------------------------------------------------------------------------------------------------------------
+
+[10,2,30,5]
+
+int min = arr[0];
+int max = arr[0];
+
+for (int i = 1;i<10;i++)
+{
+	if (arr[i]>max)
+		max = arr[i];
+
+	else if (arr[i]<min)
+		min = arr[i];
+		
+		
+}
+-------------------------------------------------------------------------------------------------------------------------------
+1,3,7
+
+for(int = 1;i<=n;i++)
+{
+	for(int j =2;j<i;j++)
+	{
+		if(i%j == 0)
+		{	
+			flag = false;
+			break;
+		}
+		else
+		{
+			flag=true;
+		}
+	}
+	if(
+-------------------------------------------------------------------------------------------------------------------------------
+
+demo(demo &refObj);
+
+demo operator =(demo obj);
+
+
+demo *p = new demo;
+
+delete p;
+
+-------------------------------------------------------------------------------------------------------------------------------
+n = 123
+op = 321
+
+	while(no != 0)
+	{
+		rem = no%10
+		no  = no/10
+		revno = revo * 10 +rem
+	}
+-------------------------------------------------------------------------------------------------------------------------------
+
+server
+
+socket()
+
+bind()
+
+listen()
+
+accept()
+
+send() recv()
+
+close()
+
+-----
+
+socket()
+
+bind()
+
+connect()
+
+send(),recv()
+
+close()
+-------------------------------------------------------------------------------------------------------------------------------
+
+Factory Design pattern client side --> 
+
+int main()
+{
+	
+	demo:: fac_method(type)	//bike
+}
+
+
+fac_method (type)
+{
+	vehicle * p;
+	
+	if(type == car)
+		p = new car();
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+multimap<int,string> m;
+
+m.insert(pair<int,string>(10,"kedar"));
+m.insert(pair<int,string>(11,"kedar"));
+m.insert(pair<int,string>(12,"kedar"));
+m.insert(pair<int,string>(13,"kedar"));
+m.insert(pair<int,string>(13,"sne"));
+
+
+map<int,string>::iterator it;
+
+for(it = m.begin();it!=m.end();++it)
+{
+	cout<<it->first;
+	cout<<it->second;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+Demonstrate oops concept 
+class demo
+{
+	int i;
+	public:
+		int j;
+		
+		demo()
+		{
+			i =10;
+			j=20;
+		}
+		
+		demo(int iNo1,int iNo2)
+		{
+			i = iNo1;
+			j = iNo2;
+		}
+		
+		virtual void fun()
+		{
+			cout<<"In Base fun()";
+		}
+	
+};
+
+class derived: public demo
+{
+	public:
+		int k;
+		derived()
+		{
+			k =40;
+		}
+		void fun()
+		{
+			cout<<"In derived fun()";
+		}
+};
+
+int main()
+{
+	derived dobj;
+	demo *p = &dobj;
+	
+	p->fun();
+	
+	return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+class demo
+{
+	int i;
+	int j;
+	int * p;
+	public:
+		demo()
+		{
+			i=10;
+			j=20;
+			p=NULL;
+		}
+		
+		demo(const demo &refObj)
+		{
+			this->p = new int[10];
+			this->i = refObj.i;
+			this->j = refObj.j;
+			memcpy(this->p,refObj.p,sizeof(p));
+		}
+		
+		demo * operator=(demo &refObj)
+		{
+			if(this != &refObj)
+			{
+				int * temp = new int;
+				memcpy(temp,refobj.p,40);
+
+				if(p!= NULL)
+					delete []p;
+				
+				this->p = temp;
+				this->i = refObj.i
+				this->j = refObj.j;
+			}
+			
+			return *this;
+		}
+};
+
+int main()
+{
+	demo obj1;
+	demo obj4(obj1);	//copy constructor
+	obj1 = obj4;// = operator
+	
+	return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+//tuzya class cha object fakt new ne banla pahije
+class base
+{
+ base(){}
+ base(const base &refObj){}
+ base * operator =(base &refObj)
+ public:
+ static base * fun()
+ {
+	return new base();
+ }
+};
+
+int main()
+{
+	base *bp = base :: fun();
+	base bobj;
+}	
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+template <typename t1,typename t2>
+void fun(t1 iNo, t2 iNo)
+{
+
+}
+
+fun(10,20);
+fun(10.23f,10.21f)
+fun(10.23,10.21)
+-------------------------------------------------------------------------------------------------------------------------------
+
+class base
+{
+ public:
+	base(const base &refObj)
+	{
+		
+	}
+	virtual void fun()
+	{
+		cout<<"In base fun()";
+	}
+};
+class derived:public base
+{
+	public:
+	void fun()
+	{
+	 cout<<"In derived fun()"<<endl;
+	}
+};
+
+int main()
+{
+	derived dobj;
+	base * bp = &dobj;
+	bp->fun();
+	return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+class Base            
+{            
+public:            
+  virtual void fun()   //1000         
+  {            
+    cout << "In fun of class Base";            
+  }            
+};            
+
+class Derived : public Base            
+{            
+private:            
+  void fun()         //2000   
+  {            
+    cout << "In fun of class Derived";            
+  }            
+};            
+
+int main()            
+{            
+  Base* pBase = new Derived;            
+  pBase->fun();            
+  return 0;            
+}    
+-------------------------------------------------------------------------------------------------------------------------------
+
+char *p1 = NULL;                
+  char *p2 = new char[10];                
+  delete p1;                
+  strcpy_s(p2, sizeof("Hello"), "Hello");                
+  delete p2;                
+  delete p2;
+
+//delete []p2;
+-------------------------------------------------------------------------------------------------------------------------------
+class A
+{
+
+ 
+
+    int *p1;
+    int *p2;
+    int *p3;
+    int *p4;
+
+ 
+
+    A()
+    {
+        p1 = NULL;
+        p2 = NULL;
+        p3 = NULL;
+        p4 = NULL;
+
+		p1 = new int ();
+		
+		delete p1;
+		p1 = NULL;
+		if(p1!= NULL)
+			delete p1;
+		
+        p2 = new int ();
+        p3 = new int ();
+
+        p4 = new int ();
+    }
+};
+
+int main()
+{    
+    A obj;
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+Write a function to identify the 3rd last node of single linked list with O(N) complexity.
+
+int CLinkList::MthFromLast(int LinkFromLast)
+{
+	Clinklist *temp1 = head;
+	Clinklist *temp2 = head;
+	
+	for(int iCounter = 0;iCounter<LinkFromLast&& temp2!=NULL;iCounter++)
+	{
+		temp2 = temp2->next;
+	}
+	
+	while(temp2->next != NULL)
+	{
+		temp1 =temp1 ->next;
+		temp2 = temp2->next;
+	}
+	
+	return temp1->data;
+}
+
+
+t1 = start
+t2 = n+t1
+-------------------------------------------------------------------------------------------------------------------------------
