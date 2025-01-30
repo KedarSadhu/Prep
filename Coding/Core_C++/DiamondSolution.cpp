@@ -45,6 +45,12 @@ class derived3 : public derived2,derived1
 int main(void)
 {
     derived3 dobj3;
+    /*
+        In base :: i = 10
+        In derived2 :: i = 30
+        In derived1 :: i = 20
+        In derived3 :: i = 20
+    */
     cout<<"sizeof(class base) :: " <<sizeof(class base) <<endl; // 4
     cout<<"sizeof(class derived1) :: " <<sizeof(class derived1) <<endl; //12 (i,vptrd1) 
     cout<<"sizeof(class derived2) :: " <<sizeof(class derived2) <<endl; // 12(i,vptrd2)
